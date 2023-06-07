@@ -1,0 +1,18 @@
+program SUPERMARIOSITTA;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  TESTEINICIAR in 'TESTEINICIAR.pas' {INICIAR},
+  SuperMarioWorld in 'SuperMarioWorld.pas' {World},
+  Fase in 'Fase.pas' {FaseMoeda};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TINICIAR, INICIAR);
+  Application.CreateForm(TWorld, World);
+  Application.CreateForm(TFaseMoeda, FaseMoeda);
+  Application.Run;
+end.

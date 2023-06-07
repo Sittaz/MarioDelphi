@@ -1,0 +1,54 @@
+unit LojaMario;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Controls.Presentation, FMX.Edit, FMX.EditBox, FMX.SpinBox;
+
+type
+  TLoja = class(TForm)
+    cogu: TImage;
+    coin: TImage;
+    coguverde: TImage;
+    box: TImage;
+    pena: TImage;
+    flower: TImage;
+    casco: TImage;
+    key: TImage;
+    star: TImage;
+    Image9: TImage;
+    Editbox: TEdit;
+    Editcasc: TEdit;
+    Editcogu: TEdit;
+    Editcoguve: TEdit;
+    Editcoin: TEdit;
+    Editflow: TEdit;
+    Editkey: TEdit;
+    Editpena: TEdit;
+    Editstar: TEdit;
+    procedure coguClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Loja: TLoja;
+
+implementation
+
+{$R *.fmx}
+
+procedure TLoja.coguClick(Sender: TObject);
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Editcogu.Text);
+  Inc(ValorAtual);
+  Editcogu.Text := IntToStr(ValorAtual);
+end;
+
+end.

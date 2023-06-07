@@ -1,0 +1,16 @@
+program SUPERMARIOSITTA;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  TESTEINICIAR in 'TESTEINICIAR.pas' {INICIAR},
+  SuperMarioWorld in 'SuperMarioWorld.pas' {World};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TINICIAR, INICIAR);
+  Application.CreateForm(TWorld, World);
+  Application.Run;
+end.

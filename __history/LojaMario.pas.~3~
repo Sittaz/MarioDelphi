@@ -1,0 +1,45 @@
+unit LojaMario;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Controls.Presentation, FMX.Edit, FMX.EditBox, FMX.SpinBox;
+
+type
+  TLoja = class(TForm)
+    cogu: TImage;
+    coin: TImage;
+    coguverde: TImage;
+    box: TImage;
+    pena: TImage;
+    flower: TImage;
+    casco: TImage;
+    key: TImage;
+    star: TImage;
+    Image9: TImage;
+    SpinBox1: TSpinBox;
+    SpinBox2: TSpinBox;
+    SpinBox4: TSpinBox;
+    SpinBox5: TSpinBox;
+    SpinBox6: TSpinBox;
+    SpinBox3: TSpinBox;
+    SpinBox7: TSpinBox;
+    SpinBox8: TSpinBox;
+    SpinBox9: TSpinBox;
+    SpinBox10: TSpinBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Loja: TLoja;
+
+implementation
+
+{$R *.fmx}
+
+end.

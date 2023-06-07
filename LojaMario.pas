@@ -1,0 +1,163 @@
+unit LojaMario;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Controls.Presentation, FMX.Edit, FMX.EditBox, FMX.SpinBox, FMX.NumberBox;
+
+type
+  TLoja = class(TForm)
+    cogu: TImage;
+    coin: TImage;
+    coguverde: TImage;
+    box: TImage;
+    pena: TImage;
+    flower: TImage;
+    casco: TImage;
+    key: TImage;
+    star: TImage;
+    Image9: TImage;
+    Numbercogu: TNumberBox;
+    Numbercasc: TNumberBox;
+    Numberbox: TNumberBox;
+    Numbercoin: TNumberBox;
+    Numberverde: TNumberBox;
+    Numberflow: TNumberBox;
+    Numberkey: TNumberBox;
+    Numberpena: TNumberBox;
+    Numbersta: TNumberBox;
+    RoundRect1: TRoundRect;
+    Text1: TText;
+    procedure coguClick(Sender: TObject);
+    procedure coguverdeClick(Sender: TObject);
+    procedure coinClick(Sender: TObject);
+    procedure boxClick(Sender: TObject);
+    procedure flowerClick(Sender: TObject);
+    procedure cascoClick(Sender: TObject);
+    procedure penaClick(Sender: TObject);
+    procedure keyClick(Sender: TObject);
+    procedure starClick(Sender: TObject);
+    procedure RoundRect1Click(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Loja: TLoja;
+
+implementation
+
+{$R *.fmx}
+
+procedure TLoja.boxClick(Sender: TObject);
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Numberbox.Text);
+  Inc(ValorAtual);
+  Numberbox.Text := IntToStr(ValorAtual);
+end;
+
+procedure TLoja.cascoClick(Sender: TObject);
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Numbercasc.Text);
+  Inc(ValorAtual);
+  Numbercasc.Text := IntToStr(ValorAtual);
+end;
+
+procedure TLoja.coguClick (Sender: TObject);
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Numbercogu.Text);
+  Inc(ValorAtual);
+  Numbercogu.Text := IntToStr(ValorAtual);
+end;
+
+procedure TLoja.coguverdeClick(Sender: TObject);
+
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Numberverde.Text);
+  Inc(ValorAtual);
+  Numberverde.Text := IntToStr(ValorAtual);
+end;
+
+
+procedure TLoja.coinClick(Sender: TObject);
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Numbercoin.Text);
+  Inc(ValorAtual);
+  Numbercoin.Text := IntToStr(ValorAtual);
+end;
+
+procedure TLoja.flowerClick(Sender: TObject);
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Numberflow.Text);
+  Inc(ValorAtual);
+  Numberflow.Text := IntToStr(ValorAtual);
+end;
+
+procedure TLoja.keyClick(Sender: TObject);
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Numberkey.Text);
+  Inc(ValorAtual);
+  Numberkey.Text := IntToStr(ValorAtual);
+end;
+
+procedure TLoja.penaClick(Sender: TObject);
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Numberpena.Text);
+  Inc(ValorAtual);
+  Numberpena.Text := IntToStr(ValorAtual);
+end;
+
+
+procedure TLoja.RoundRect1Click(Sender: TObject);
+var
+  Total: Extended;
+  I: Integer;
+begin
+  Total := 0;
+
+  // Percorre cada controle TNumberBox no formulário
+  for I := 0 to ComponentCount - 1 do
+  begin
+    if Components[I] is TNumberBox then
+    begin
+      // Obtém o valor atual do NumberBox e adiciona ao total
+      Total := Total + TNumberBox(Components[I]).Value;
+    end;
+  end;
+
+  // Exibe o total em um ShowMessage ou em qualquer outro local desejado
+  ShowMessage('O total é: ' + FloatToStr(Total));
+end;
+
+procedure TLoja.starClick(Sender: TObject);
+var
+  ValorAtual: Integer;
+begin
+  ValorAtual := StrToInt(Numbersta.Text);
+  Inc(ValorAtual);
+  Numbersta.Text := IntToStr(ValorAtual);
+end;
+
+
+end.

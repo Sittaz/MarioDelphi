@@ -1,0 +1,167 @@
+unit SuperMarioWorld;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Menus, FMX.Layouts, FMX.ExtCtrls;
+
+type
+  TWorld = class(TForm)
+    Painel1: TPanel;
+    MarioCorrendo: TImage;
+    Timer1: TTimer;
+    MarioParado: TImage;
+    Timer2: TTimer;
+    pedra: TImage;
+    carabrava: TImage;
+    Timer3: TTimer;
+    Timer4: TTimer;
+    cara: TImage;
+    BackGround: TImage;
+    Image1: TImage;
+    Image2: TImage;
+    Mario: TImage;
+    RoundRect1: TRoundRect;
+    procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Timer3Timer(Sender: TObject);
+    procedure Timer4Timer(Sender: TObject);
+
+
+
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  World: TWorld;
+  MarioLado : string = 'esquerdo';
+
+
+
+implementation
+
+{$R *.fmx}
+
+
+procedure TWorld.FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+   begin
+              if keychar = 'a' then
+    begin
+              Mario.Position.x := Mario.Position.x -8;
+              if MarioLado = 'direito' then
+              begin
+                MarioLado := 'esquerdo';
+                Mario.Bitmap.FlipHorizontal;
+                MarioCorrendo.Bitmap.FlipHorizontal;
+                MarioParado.Bitmap.FlipHorizontal;
+                timer1.Enabled := true;
+              end;
+    end;
+
+              if keychar = 'd' then
+    begin
+               Mario.Position.X := Mario.Position.X +8;
+                if MarioLado = 'esquerdo' then
+              begin
+                MarioLado := 'direito';
+                Mario.Bitmap.FlipHorizontal;
+                MarioCorrendo.Bitmap.FlipHorizontal;
+                MarioParado.Bitmap.FlipHorizontal;
+                timer1.Enabled := true;
+              end;
+    end;
+
+
+  if (Mario.Position.X >= cara.Position.X -120) and (Mario.Position.X <= cara.Position.X +120) then
+  begin
+  cara.Bitmap := carabrava.Bitmap;
+  end
+  else
+  cara.Bitmap := pedra.Bitmap;
+
+  if (Mario.Position.X >= cara.Position.X -70) and (Mario.Position.X <= cara.Position.X +70) then
+  begin
+      timer3.Enabled := true;
+  end;
+
+
+
+end;
+
+
+procedure TWorld.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+begin
+    if (keychar = 'd') or (keychar = 'a') then
+    begin
+    Mario.Bitmap := MarioParado.Bitmap;
+    Timer1.Enabled := true;
+    Timer2.Enabled := true;
+    end;
+end;
+
+
+
+
+
+procedure TWorld.Timer1Timer(Sender: TObject);
+begin
+
+    Mario.Bitmap := MarioParado.Bitmap;
+    timer2.Enabled := true;
+    timer1.Enabled := false;
+
+end;
+
+procedure TWorld.Timer2Timer(Sender: TObject);
+begin
+
+    Mario.Bitmap := MarioCorrendo.Bitmap;
+
+    timer1.Enabled := true;
+    timer2.Enabled := false;
+
+end;
+
+
+procedure TWorld.Timer3Timer(Sender: TObject);
+begin
+
+  if cara.Position.Y <= 196 then
+  begin
+    cara.Position.Y := cara.Position.Y -15;
+    timer4.Enabled := true;
+    timer3.Enabled := false;
+  end
+  else
+  timer3.Enabled := false;
+
+end;
+
+procedure TWorld.Timer4Timer(Sender: TObject);
+begin
+  if cara.Position.Y <= 196 then
+  begin
+    cara.Position.Y := cara.Position.Y +15;
+    timer3.Enabled := true;
+    timer4.Enabled := false;
+  end
+  else
+  timer4.Enabled := false;
+
+end;
+
+
+
+end.
